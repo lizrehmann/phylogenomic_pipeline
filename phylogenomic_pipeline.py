@@ -49,7 +49,14 @@ tree_list = []
 
 #For loop to get align files and run iqtree on each (see example code and alter for my needs)
     #run tree_cmd using system call (try on command line first)
-
+for file in all_aln_files [0:10]:
+    
+    #Change output path to out directory
+    new_file_path = file.replace(in_dir, out_dir)
+    #print(new_file_path)
+    tree_cmd = f"iqtree -s {new_file_path} -m TEST -nt 2"
+    #print(tree_cmd)
+    os.system(tree_cmd)
 
 #For loop to go store each tree as a phylo object, getting a newick format
     #for loop to go through phylo object and see if "Es_" in tip name
